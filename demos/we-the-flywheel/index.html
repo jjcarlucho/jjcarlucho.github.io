@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI Sales Agent demo for We The Flywheel — by Jonathan Carlucho</title>
+<style>
+/* Paleta del portfolio jjcarlucho.github.io (modo dark) — fuentes del sistema para que pese nada */
+:root{ --ink:#0a1318; --paper:#10181d; --body:#ccd6da; --muted:#8a9aa1; --petrol:#4fb3ba; --copper:#e08a56; --hair:#26323a; --tile:#161f25; --green:#3ddc97; }
+*{ box-sizing:border-box; margin:0; }
+body{ background:var(--paper); color:var(--body); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; font-size:16px; line-height:1.6; }
+.mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+a{ color:var(--petrol); }
+.wrap{ max-width:760px; margin:0 auto; padding:0 20px; }
+
+header{ background:
+  radial-gradient(700px 340px at 80% -10%, rgba(224,138,86,.16), transparent 60%),
+  radial-gradient(560px 300px at 10% 110%, rgba(79,179,186,.12), transparent 60%),
+  var(--ink); padding:60px 0 44px; border-bottom:1px solid var(--hair); }
+.avail{ display:inline-flex; align-items:center; gap:9px; font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#b9c7cc; border:1px solid #2c3b43; border-radius:30px; padding:7px 15px; }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(61,220,151,.5); animation:pulse 2.2s infinite; }
+@keyframes pulse{ 70%{ box-shadow:0 0 0 9px rgba(61,220,151,0);} 100%{ box-shadow:0 0 0 0 rgba(61,220,151,0);} }
+h1{ font-family:Georgia,"Times New Roman",serif; font-weight:700; font-size:clamp(30px,5.6vw,48px); line-height:1.08; color:#fff; margin:22px 0 10px; letter-spacing:-.01em; }
+h1 em{ font-style:italic; color:var(--copper); }
+.sub{ color:#c8d4d8; max-width:600px; }
+.sub b{ color:#fff; }
+
+.chatbox{ margin:44px auto 0; border:1px solid var(--hair); border-radius:10px; background:var(--tile); overflow:hidden; }
+.chathead{ display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--hair); background:var(--ink); }
+.chathead .av{ width:34px; height:34px; border-radius:50%; background:var(--petrol); color:var(--ink); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; }
+.chathead .who{ color:#fff; font-weight:600; font-size:14px; }
+.chathead .st{ font-family:ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--green); }
+#log{ min-height:220px; max-height:56vh; overflow-y:auto; padding:20px 18px; display:flex; flex-direction:column; gap:12px; }
+.msg{ max-width:82%; padding:11px 15px; border-radius:12px; font-size:15px; animation:up .25s ease; }
+@keyframes up{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+.msg.user{ align-self:flex-end; background:var(--petrol); color:var(--ink); border-bottom-right-radius:3px; font-weight:500; }
+.msg.agent{ align-self:flex-start; background:var(--ink); border:1px solid var(--hair); border-bottom-left-radius:3px; }
+.msg.hello{ color:var(--muted); }
+.typing{ align-self:flex-start; padding:13px 16px; }
+.typing span{ display:inline-block; width:7px; height:7px; margin-right:4px; border-radius:50%; background:var(--muted); animation:blink 1s infinite; }
+.typing span:nth-child(2){ animation-delay:.18s; } .typing span:nth-child(3){ animation-delay:.36s; }
+@keyframes blink{ 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
+.qs{ padding:14px 18px 18px; border-top:1px solid var(--hair); display:flex; flex-wrap:wrap; gap:8px; }
+.qs .hint{ width:100%; font-family:ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); margin-bottom:2px; }
+.q{ background:none; border:1px solid var(--hair); color:var(--body); border-radius:20px; padding:8px 14px; font-size:13.5px; font-family:inherit; cursor:pointer; text-align:left; transition:border-color .15s, color .15s, opacity .15s; }
+.q:hover{ border-color:var(--petrol); color:#fff; }
+.q.done{ opacity:.35; cursor:default; text-decoration:line-through; }
+
+.note{ margin:26px auto 0; font-size:13.5px; color:var(--muted); max-width:640px; }
+footer{ margin-top:70px; background:var(--ink); border-top:1px solid var(--hair); padding:56px 0 64px; text-align:center; }
+footer h2{ font-family:Georgia,serif; font-weight:700; font-size:clamp(24px,4.4vw,36px); color:#fff; line-height:1.15; }
+footer h2 em{ font-style:italic; color:var(--copper); }
+footer .cta{ display:inline-block; margin-top:24px; background:var(--copper); color:#fff; text-decoration:none; font-family:ui-monospace,Menlo,monospace; font-size:13.5px; padding:14px 26px; border-radius:5px; transition:transform .15s; }
+footer .cta:hover{ transform:translateY(-2px); }
+footer .links{ margin-top:22px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--muted); }
+@media (prefers-reduced-motion: reduce){ .dot,.typing span{ animation:none; } .msg{ animation:none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="avail"><span class="dot"></span>Live demo &middot; zero setup on your side</span>
+    <h1>Built overnight for <em>We The Flywheel</em><br>by Jonathan Carlucho</h1>
+    <p class="sub">This is a working preview of an <b>AI sales agent trained on your own website</b>. Click any question below — it answers the way your best rep would, 24/7, in any language your customers speak.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="chatbox">
+    <div class="chathead">
+      <div class="av">W</div>
+      <div><div class="who">We The Flywheel — AI Sales Agent</div><div class="st">&#9679; online &middot; replies in seconds</div></div>
+    </div>
+    <div id="log"><div class="msg agent hello">&#128075; Hi! I'm the AI assistant for We The Flywheel. Ask me anything — tap a question below to see how I'd handle your real customers.</div></div>
+    <div class="qs" id="qs"><div class="hint">Questions your customers actually ask &darr;</div></div>
+  </div>
+  <p class="note">Every answer was generated from We The Flywheel's public website — no scripts, no canned FAQ. A production version connects to your calendar, CRM and WhatsApp, and learns from every conversation.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>This took me 3 hours.<br><em>Imagine 30 days.</em></h2>
+    <a class="cta" href="mailto:jjcarlucho@gmail.com?subject=AI%20agent%20for%20We%20The%20Flywheel">jjcarlucho@gmail.com</a>
+    <div class="links"><a href="https://jjcarlucho.github.io">jjcarlucho.github.io</a> &middot; <a href="https://github.com/jjcarlucho">github.com/jjcarlucho</a></div>
+  </div>
+</footer>
+
+<script>
+// Chat simulado — JS vanilla, sin APIs: las respuestas ya viven en la página
+const QA = [{"q":"What exactly does We The Flywheel do?","a":"We're an AI-native digital group company with a roster of operating companies: Flywheel Media (a performance media network of 500+ owned properties across 42 markets), Flywheel Sports (independent sports journalism), Flywheel Studio (a product studio using spec-driven development and agentic coding), Flywheel Motion (brand acceleration for high-impact professionals), and Flywheel Advisory (AI consultancy and technology due diligence). One conversation routes you to the right team for your goal. Tell me what you're trying to achieve and I'll point you in the right direction — or just hit Get in Touch."},{"q":"How much do your services cost?","a":"Pricing depends on which operating company fits your goal and the scope of the work, so we don't publish fixed rates on the site. The best way to get a real number is a quick conversation — tell us the goal and we'll route you to the right team, who can scope it with you. Want to send a message through our contact form? It only takes a minute."},{"q":"I'm not sure which of your companies I actually need. How does that work?","a":"That's exactly how we're set up: you don't have to figure it out yourself. Tell us the goal — reach audiences (Media & Sports), build a product or brand (Studio & Motion), or enterprise tech & AI (Advisory) — and one conversation routes you to the operating company and the people who get it done. Just use the Get in Touch form and describe what you're after."},{"q":"Why should I trust you? What results or recognition do you have?","a":"Flywheel Motion was named a 2026 World Changing Idea by Fast Company, and our Group CEO Thomas Prommer was named HotTopics Global CIO for 2026. Thomas brings 20+ years leading AI-driven digital transformations — former Global SVP Engineering at Adidas, CIO at Sweetgreen, and Senior Technology Advisor at Bain Capital — with $2B+ revenue impact and work across 50+ Fortune 500 companies. If you'd like relevant client examples for your specific situation, reach out and we'll connect you with the right team."},{"q":"Can you help us adopt AI in our enterprise?","a":"Yes — that's Flywheel Advisory, our AI consultancy focused on digital transformation and AI adoption for enterprises, along with engineering org design. Our whole thesis is that agentic AI adopters are pulling ahead, and the opportunity is now. Select 'AI Consultancy' in our contact form and let's discuss where you are on that journey."},{"q":"How fast can Flywheel Studio build our product, and what does the process look like?","a":"Flywheel Studio ships digital products fast and at lower cost by pairing spec-driven development with agentic coding workflows, taking you from prototype to production at startup speed. Speed is genuinely our thing — clients often say 'WTF' when they first experience our GTM and iteration speed, and yes, the name is intentional. For a timeline on your specific product, send us a message with 'Product Studio' as the inquiry type."},{"q":"We're a PE firm evaluating a deal — can you do technical due diligence?","a":"Absolutely. Flywheel Advisory provides technology due diligence — product, architecture, and team validation — specifically to help private equity firms, venture investors, and founders de-risk investments. Pick 'Tech Due Diligence' in our contact form and we'll get the right people on a conversation about your deal."},{"q":"How do I get started?","a":"Simple: use the Get in Touch form on our site — choose your inquiry type (Media & Advertising, AI Consultancy, Product Studio, Tech Due Diligence, Partnership, or General), tell us the goal, and we'll bring the right team. You can also email us directly at the address on the site. We don't do small talk, only bold action — so the sooner you reach out, the sooner we move."}];
+const log = document.getElementById('log');
+const qs = document.getElementById('qs');
+let busy = false;
+const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+
+QA.forEach((item, idx) => {
+  const b = document.createElement('button');
+  b.className = 'q'; b.type = 'button'; b.textContent = item.q;
+  b.addEventListener('click', () => {
+    if (busy || b.classList.contains('done')) return;
+    busy = true; b.classList.add('done');
+    const u = document.createElement('div');
+    u.className = 'msg user'; u.textContent = item.q;
+    log.appendChild(u); scrollDown();
+    const t = document.createElement('div');
+    t.className = 'typing'; t.innerHTML = '<span></span><span></span><span></span>';
+    log.appendChild(t); scrollDown();
+    setTimeout(() => {
+      t.remove();
+      const a = document.createElement('div');
+      a.className = 'msg agent';
+      log.appendChild(a); scrollDown();
+      // efecto máquina de escribir suave (respeta reduced-motion)
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { a.textContent = item.a; busy = false; scrollDown(); return; }
+      let i = 0;
+      const tick = setInterval(() => {
+        i += 3; a.textContent = item.a.slice(0, i); scrollDown();
+        if (i >= item.a.length) { clearInterval(tick); busy = false; }
+      }, 14);
+    }, 650 + Math.random() * 500);
+  });
+  qs.appendChild(b);
+});
+</script>
+</body>
+</html>
