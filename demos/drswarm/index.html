@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI Sales Agent demo for DrSwarm — by Jonathan Carlucho</title>
+<style>
+/* Paleta del portfolio jjcarlucho.github.io (modo dark) — fuentes del sistema para que pese nada */
+:root{ --ink:#0a1318; --paper:#10181d; --body:#ccd6da; --muted:#8a9aa1; --petrol:#4fb3ba; --copper:#e08a56; --hair:#26323a; --tile:#161f25; --green:#3ddc97; }
+*{ box-sizing:border-box; margin:0; }
+body{ background:var(--paper); color:var(--body); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif; font-size:16px; line-height:1.6; }
+.mono{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+a{ color:var(--petrol); }
+.wrap{ max-width:760px; margin:0 auto; padding:0 20px; }
+
+header{ background:
+  radial-gradient(700px 340px at 80% -10%, rgba(224,138,86,.16), transparent 60%),
+  radial-gradient(560px 300px at 10% 110%, rgba(79,179,186,.12), transparent 60%),
+  var(--ink); padding:60px 0 44px; border-bottom:1px solid var(--hair); }
+.avail{ display:inline-flex; align-items:center; gap:9px; font-family:ui-monospace,Menlo,monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#b9c7cc; border:1px solid #2c3b43; border-radius:30px; padding:7px 15px; }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(61,220,151,.5); animation:pulse 2.2s infinite; }
+@keyframes pulse{ 70%{ box-shadow:0 0 0 9px rgba(61,220,151,0);} 100%{ box-shadow:0 0 0 0 rgba(61,220,151,0);} }
+h1{ font-family:Georgia,"Times New Roman",serif; font-weight:700; font-size:clamp(30px,5.6vw,48px); line-height:1.08; color:#fff; margin:22px 0 10px; letter-spacing:-.01em; }
+h1 em{ font-style:italic; color:var(--copper); }
+.sub{ color:#c8d4d8; max-width:600px; }
+.sub b{ color:#fff; }
+
+.chatbox{ margin:44px auto 0; border:1px solid var(--hair); border-radius:10px; background:var(--tile); overflow:hidden; }
+.chathead{ display:flex; align-items:center; gap:12px; padding:14px 18px; border-bottom:1px solid var(--hair); background:var(--ink); }
+.chathead .av{ width:34px; height:34px; border-radius:50%; background:var(--petrol); color:var(--ink); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; }
+.chathead .who{ color:#fff; font-weight:600; font-size:14px; }
+.chathead .st{ font-family:ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--green); }
+#log{ min-height:220px; max-height:56vh; overflow-y:auto; padding:20px 18px; display:flex; flex-direction:column; gap:12px; }
+.msg{ max-width:82%; padding:11px 15px; border-radius:12px; font-size:15px; animation:up .25s ease; }
+@keyframes up{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+.msg.user{ align-self:flex-end; background:var(--petrol); color:var(--ink); border-bottom-right-radius:3px; font-weight:500; }
+.msg.agent{ align-self:flex-start; background:var(--ink); border:1px solid var(--hair); border-bottom-left-radius:3px; }
+.msg.hello{ color:var(--muted); }
+.typing{ align-self:flex-start; padding:13px 16px; }
+.typing span{ display:inline-block; width:7px; height:7px; margin-right:4px; border-radius:50%; background:var(--muted); animation:blink 1s infinite; }
+.typing span:nth-child(2){ animation-delay:.18s; } .typing span:nth-child(3){ animation-delay:.36s; }
+@keyframes blink{ 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
+.qs{ padding:14px 18px 18px; border-top:1px solid var(--hair); display:flex; flex-wrap:wrap; gap:8px; }
+.qs .hint{ width:100%; font-family:ui-monospace,Menlo,monospace; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); margin-bottom:2px; }
+.q{ background:none; border:1px solid var(--hair); color:var(--body); border-radius:20px; padding:8px 14px; font-size:13.5px; font-family:inherit; cursor:pointer; text-align:left; transition:border-color .15s, color .15s, opacity .15s; }
+.q:hover{ border-color:var(--petrol); color:#fff; }
+.q.done{ opacity:.35; cursor:default; text-decoration:line-through; }
+
+.note{ margin:26px auto 0; font-size:13.5px; color:var(--muted); max-width:640px; }
+footer{ margin-top:70px; background:var(--ink); border-top:1px solid var(--hair); padding:56px 0 64px; text-align:center; }
+footer h2{ font-family:Georgia,serif; font-weight:700; font-size:clamp(24px,4.4vw,36px); color:#fff; line-height:1.15; }
+footer h2 em{ font-style:italic; color:var(--copper); }
+footer .cta{ display:inline-block; margin-top:24px; background:var(--copper); color:#fff; text-decoration:none; font-family:ui-monospace,Menlo,monospace; font-size:13.5px; padding:14px 26px; border-radius:5px; transition:transform .15s; }
+footer .cta:hover{ transform:translateY(-2px); }
+footer .links{ margin-top:22px; font-family:ui-monospace,Menlo,monospace; font-size:12.5px; color:var(--muted); }
+@media (prefers-reduced-motion: reduce){ .dot,.typing span{ animation:none; } .msg{ animation:none; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="avail"><span class="dot"></span>Live demo &middot; zero setup on your side</span>
+    <h1>Built overnight for <em>DrSwarm</em><br>by Jonathan Carlucho</h1>
+    <p class="sub">This is a working preview of an <b>AI sales agent trained on your own website</b>. Click any question below — it answers the way your best rep would, 24/7, in any language your customers speak.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="chatbox">
+    <div class="chathead">
+      <div class="av">D</div>
+      <div><div class="who">DrSwarm — AI Sales Agent</div><div class="st">&#9679; online &middot; replies in seconds</div></div>
+    </div>
+    <div id="log"><div class="msg agent hello">&#128075; Hi! I'm the AI assistant for DrSwarm. Ask me anything — tap a question below to see how I'd handle your real customers.</div></div>
+    <div class="qs" id="qs"><div class="hint">Questions your customers actually ask &darr;</div></div>
+  </div>
+  <p class="note">Every answer was generated from DrSwarm's public website — no scripts, no canned FAQ. A production version connects to your calendar, CRM and WhatsApp, and learns from every conversation.</p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>This took me 3 hours.<br><em>Imagine 30 days.</em></h2>
+    <a class="cta" href="mailto:jjcarlucho@gmail.com?subject=AI%20agent%20for%20DrSwarm">jjcarlucho@gmail.com</a>
+    <div class="links"><a href="https://jjcarlucho.github.io">jjcarlucho.github.io</a> &middot; <a href="https://github.com/jjcarlucho">github.com/jjcarlucho</a></div>
+  </div>
+</footer>
+
+<script>
+// Chat simulado — JS vanilla, sin APIs: las respuestas ya viven en la página
+const QA = [{"q":"How much does DrSwarm cost?","a":"We keep pricing simple: our Single Provider plan for solo practices is $499 per month, and the Small Group plan is $999 per month — both include A.I. Agent EHR, Medical Billing, Revenue Cycle Management, unlimited patients, and unlimited support. For our RCM + AI Agents full-service option or Enterprise, pricing is customized to your practice. Want me to connect you with our team for a quote, or you can Get Started For Free right now?"},{"q":"How does DrSwarm actually work in my clinic?","a":"DrSwarm deploys intelligent AI agents that take on your repetitive operational work — an AI Scheduling Agent that coordinates providers, rooms, and equipment; a Revenue Cycle Agent that handles claims, denials, and payment follow-up; and a Patient Communication Agent that manages calls, texts, portal messages, and appointment reminders. Your staff stays focused on patients while the agents handle the rest. The best way to see it is to Get Started For Free and let us walk you through it."},{"q":"Will DrSwarm integrate with our current EHR?","a":"Very likely, yes — DrSwarm connects with the systems you already use, including Epic, Athena, DrChrono, NextGen, eClinicalWorks, and Cerner, with enterprise-grade secure integration. Our onboarding includes a System Integration step where we seamlessly connect DrSwarm to your existing EHR, practice management, and billing systems. Tell me which EHR you're on and I can get our team to confirm the details — or just hit Get Started For Free."},{"q":"How long does it take to get up and running?","a":"Fast — typical deployment is 2 to 4 weeks, not years, and no big IT team is required on your end. Our process covers Discovery & Planning, System Integration, Staff Training, and Go Live, so your team feels confident working alongside the AI agents from day one. Ready to start the clock? Get Started For Free and we'll kick off discovery."},{"q":"Will DrSwarm replace our staff?","a":"No — DrSwarm is staff augmentation, not staff replacement. Our AI agents take on the repetitive work so your team can do more with less and focus on patients, giving them superhuman support without adding headcount. If you'd like to see exactly how it fits your team's workflows, our team would love to show you — just click Get Started For Free."},{"q":"Is DrSwarm HIPAA compliant and secure?","a":"Yes — DrSwarm is HIPAA compliant with enterprise-grade security, including secure integration with Epic, Athena, DrChrono, and other EHRs. Security is built into how we connect with the systems you already use. If your compliance team has specific questions, I can connect you with ours — or start with a free account and we'll walk through it together."},{"q":"What results can we expect?","a":"Clinics using DrSwarm see faster ROI with deployment in weeks, and we've measured a 70% reduction in documentation time. Your patients get faster answers and your staff gets fewer headaches — that's the superhuman operational efficiency clinics nationwide trust us for. Want to see what that looks like for your practice specifically? Get Started For Free and we'll map it out in discovery."},{"q":"Who's behind DrSwarm — can we trust a newer company with our operations?","a":"Fair question. DrSwarm was founded by Michael Nusimow, who previously co-founded and led DrChrono as CEO (YC W11), building a healthcare platform across EHR, practice management, telehealth, and billing/RCM that served thousands of physicians and millions of patients. Our team has deep experience in healthcare software and AI, and we work with practices from 5 to 500 providers. Happy to set up a conversation with the team — or Get Started For Free and see it firsthand."}];
+const log = document.getElementById('log');
+const qs = document.getElementById('qs');
+let busy = false;
+const scrollDown = () => { log.scrollTop = log.scrollHeight; };
+
+QA.forEach((item, idx) => {
+  const b = document.createElement('button');
+  b.className = 'q'; b.type = 'button'; b.textContent = item.q;
+  b.addEventListener('click', () => {
+    if (busy || b.classList.contains('done')) return;
+    busy = true; b.classList.add('done');
+    const u = document.createElement('div');
+    u.className = 'msg user'; u.textContent = item.q;
+    log.appendChild(u); scrollDown();
+    const t = document.createElement('div');
+    t.className = 'typing'; t.innerHTML = '<span></span><span></span><span></span>';
+    log.appendChild(t); scrollDown();
+    setTimeout(() => {
+      t.remove();
+      const a = document.createElement('div');
+      a.className = 'msg agent';
+      log.appendChild(a); scrollDown();
+      // efecto máquina de escribir suave (respeta reduced-motion)
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { a.textContent = item.a; busy = false; scrollDown(); return; }
+      let i = 0;
+      const tick = setInterval(() => {
+        i += 3; a.textContent = item.a.slice(0, i); scrollDown();
+        if (i >= item.a.length) { clearInterval(tick); busy = false; }
+      }, 14);
+    }, 650 + Math.random() * 500);
+  });
+  qs.appendChild(b);
+});
+</script>
+</body>
+</html>
