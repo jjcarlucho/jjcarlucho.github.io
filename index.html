@@ -119,6 +119,10 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
 .case b{ color:var(--head); }
 .case .metric{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--copper); margin-top:12px; }
 @media (max-width:640px){ .case{ grid-template-columns:1fr; } .case .num{ font-size:34px; margin-bottom:6px; } }
+.shots{ display:grid; grid-template-columns:1.8fr 1fr; gap:10px; margin-top:20px; max-width:760px; }
+.shots .col{ display:grid; gap:10px; }
+.shots img{ width:100%; display:block; border:1px solid var(--hair); border-radius:7px; }
+@media (max-width:640px){ .shots{ grid-template-columns:1fr; } }
 
 .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
 .step{ background:var(--tile); border-top:3px solid var(--petrol); padding:26px 24px; }
@@ -222,6 +226,20 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
     <h3>Trading systems that survive their own hype</h3>
     <p>Recovered a client's NinjaTrader 8 algorithmic system from a dead VPS, extended it with an <b>ONNX ML inference gate</b>, and built a research pipeline with <b>pre-registered out-of-sample validation</b> — the discipline that kills false edges before they burn capital.</p>
     <p class="metric">→ client system recovered, extended, and validated</p>
+  </div></div>
+
+  <div class="case rv"><div class="num">06</div><div>
+    <span class="tag">Multi-Agent OS · Local-first · $0 API cost</span>
+    <h3>The Office — an operating system for AI agents</h3>
+    <p>A personal command center where a fleet of AI agents — sales, prospecting, QA, orchestration — is visualized as a <b>live pixel-art office</b>: every character on screen is a real bounded workflow with state, run history and an accountable owner. A General Manager agent coordinates the roster and <b>temporary sub-agents spawn on demand</b>, do their slice of work, and disappear. The part that surprises engineers: it runs <b>100% local on a Claude subscription</b> — no paid API keys, works fully offline, external cost $0.00.</p>
+    <div class="shots">
+      <img src="assets/office/office-live.png" alt="The Office — live pixel-art visualization of a real AI agent fleet" loading="lazy">
+      <div class="col">
+        <img src="assets/office/dashboard-home.png" alt="Mi Dashboard — operations command center" loading="lazy">
+        <img src="assets/office/matrix.png" alt="Sub-agent spawning on demand (Matrix protocol)" loading="lazy">
+      </div>
+    </div>
+    <p class="metric">→ runs on a subscription, not an API budget · offline-ready · one person, a whole team on screen</p>
   </div></div>
 </section>
 
