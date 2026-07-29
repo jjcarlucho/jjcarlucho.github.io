@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jonathan Carlucho — AI Systems Engineer</title>
-<meta name="description" content="I build AI systems that sell — live in production, measured in revenue.">
+<title>Jonathan Carlucho — AI Automation Engineer</title>
+<meta name="description" content="AI automation engineer building reliable agents, auditable LLM pipelines, CRM workflows and evaluation systems.">
 <style>
 @font-face {
   font-family: 'Fraunces';
@@ -79,6 +79,10 @@ nav .links{ display:flex; gap:22px; }
 nav .links a{ font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#b9c7cc; text-decoration:none; }
 nav .links a:hover{ color:var(--copper2); }
 nav .hire{ color:var(--copper2) !important; }
+@media (max-width:420px){
+  nav .links{ gap:14px; }
+  nav .hire{ display:none; }
+}
 
 .band{ background:
   radial-gradient(900px 420px at 78% -10%, rgba(224,138,86,.14), transparent 60%),
@@ -89,6 +93,7 @@ nav .hire{ color:var(--copper2) !important; }
 @keyframes pulse{ 70%{ box-shadow:0 0 0 9px rgba(61,220,151,0);} 100%{ box-shadow:0 0 0 0 rgba(61,220,151,0);} }
 h1{ font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:clamp(44px,7.6vw,86px); line-height:1.0; color:#fff; margin:26px 0 8px; letter-spacing:-.01em; text-wrap:balance; }
 h1 em{ font-style:italic; color:var(--copper2); }
+@media (max-width:420px){ h1{ font-size:40px; } }
 .thesis{ font-size:clamp(17px,2vw,20px); max-width:660px; color:#c8d4d8; margin-top:18px; }
 .thesis b{ color:#fff; }
 .cta{ margin:34px 0 0; display:flex; gap:14px; flex-wrap:wrap; }
@@ -119,11 +124,6 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
 .case b{ color:var(--head); }
 .case .metric{ font-family:"IBM Plex Mono",monospace; font-size:12.5px; color:var(--copper); margin-top:12px; }
 @media (max-width:640px){ .case{ grid-template-columns:1fr; } .case .num{ font-size:34px; margin-bottom:6px; } }
-.shots{ display:grid; grid-template-columns:1.8fr 1fr; gap:10px; margin-top:20px; max-width:760px; }
-.shots .col{ display:grid; gap:10px; }
-.shots img{ width:100%; display:block; border:1px solid var(--hair); border-radius:7px; }
-@media (max-width:640px){ .shots{ grid-template-columns:1fr; } }
-
 .steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
 .step{ background:var(--tile); border-top:3px solid var(--petrol); padding:26px 24px; }
 .step .w{ font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--copper); }
@@ -134,7 +134,7 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
 .plan{ border:1px solid var(--hair); padding:30px 28px; border-radius:6px; transition:transform .15s ease, box-shadow .15s ease; }
 .plan:hover{ transform:translateY(-3px); box-shadow:0 12px 32px rgba(12,22,28,.10); }
 .plan.hot{ border-color:var(--copper); position:relative; }
-.plan.hot::before{ content:"MOST BOOKED"; position:absolute; top:-9px; left:24px; background:var(--copper); color:#fff; font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em; padding:3px 10px; border-radius:3px; }
+.plan.hot::before{ content:"CORE OFFER"; position:absolute; top:-9px; left:24px; background:var(--copper); color:#fff; font-family:"IBM Plex Mono",monospace; font-size:9.5px; letter-spacing:.14em; padding:3px 10px; border-radius:3px; }
 .plan h3{ font-family:"Fraunces",Georgia,serif; font-size:21px; color:var(--head); }
 .plan .price{ font-family:"Fraunces",Georgia,serif; font-weight:700; font-size:34px; color:var(--petrol); margin:10px 0 2px; }
 .plan .per{ font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; }
@@ -167,136 +167,128 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
 </div></nav>
 
 <header class="band" id="top"><div class="wrap">
-  <span class="avail"><span class="dot"></span> Available for contract work — booking July</span>
-  <h1>I build AI systems<br>that <em>sell.</em></h1>
-  <p class="thesis">Most engineers show demos. I operate a <b>live production system</b>: a bilingual AI sales agent answering real customers 24/7, wired into the ad platform so spend optimizes on <b>closed sales — not clicks</b>. I architect, drive AI coding agents that write complete code, and verify everything with adversarial audits. <b>One person, shipping what used to take a team.</b></p>
+  <span class="avail"><span class="dot"></span> Available for remote AI automation roles &amp; projects</span>
+  <h1>I build AI systems<br>that <em>hold up.</em></h1>
+  <p class="thesis">I turn messy workflows into reliable agents, pipelines and integrations. My work spans a <b>deployed bilingual web sales agent</b>, auditable conversation and prospecting pipelines, multi-tenant data infrastructure and a test-verified CRM event path. Every case below names what is deployed, verified, prototyped or demonstrated.</p>
   <div class="cta">
-    <a class="p" href="mailto:jjcarlucho@gmail.com">Book a 15-min call</a>
-    <a class="s" href="https://cylinderautosales.com" target="_blank" rel="noopener">See the live agent ↗</a>
-    <a class="s" href="https://github.com/jjcarlucho" target="_blank" rel="noopener">GitHub</a>
+    <a class="p" href="mailto:jjcarlucho@gmail.com">Discuss a role or project</a>
+    <a class="s" href="https://cylinderautosales.com" target="_blank" rel="noopener noreferrer">See the deployed web agent ↗</a>
+    <a class="s" href="https://github.com/jjcarlucho" target="_blank" rel="noopener noreferrer">GitHub</a>
   </div>
   <div class="ticker">
-    <span><b>●</b> SOFÍA: LIVE IN PRODUCTION</span><span>UPTIME: 24/7</span><span>CHANNELS: WEB · WHATSAPP · VOICE</span><span>EVERY MESSAGE LLM-VERIFIED</span>
+    <span><b>●</b> SOFÍA WEB + CRM: DEPLOYED · E2E VERIFIED</span><span>4,088 CONVERSATIONS: VERIFIED DIAGNOSTIC</span><span>11,837 → 2,135: VERIFIED PIPELINE</span><span>CAPI PATH: IMPLEMENTED + TEST-VERIFIED</span>
   </div>
 </div></header>
 
 <div class="stats">
-  <div class="stat rv"><div class="n">24/7</div><div class="l">AI sales agent live in production</div></div>
-  <div class="stat rv"><div class="n">4,088</div><div class="l">Real conversations judged by LLM eval</div></div>
-  <div class="stat rv"><div class="n">11,800+</div><div class="l">Businesses scored by LLM pipeline</div></div>
-  <div class="stat rv"><div class="n">6</div><div class="l">Production systems shipped solo</div></div>
+  <div class="stat rv"><div class="n">E2E</div><div class="l">Real CRM booking path verified</div></div>
+  <div class="stat rv"><div class="n">4,088</div><div class="l">Real sales conversations processed</div></div>
+  <div class="stat rv"><div class="n">11,837</div><div class="l">Businesses processed into 2,135 qualified prospects</div></div>
+  <div class="stat rv"><div class="n">RLS</div><div class="l">Tenant isolation + encrypted PII implemented</div></div>
 </div>
 
 <div class="wrap">
 <section id="work">
   <p class="eyebrow rv">Case studies</p>
-  <h2 class="rv">Systems that touch real money.</h2>
-  <p class="sub rv">Each one runs today, in front of real customers. No mockups, no "coming soon."</p>
+  <h2 class="rv">Evidence-backed AI automation.</h2>
+  <p class="sub rv">The state label is part of every case: deployed, verified, test-verified, prototype or demo.</p>
 
   <div class="case rv"><div class="num">01</div><div>
-    <span class="tag">AI Agent · Claude API · Voice + Text</span>
-    <h3>Sofía — the AI salesperson that never sleeps</h3>
-    <p>A bilingual (EN/ES) sales agent for a U.S. car dealership: answers, qualifies and books appointments across web chat, WhatsApp and voice. Every outbound message passes <b>guardrails plus an LLM-as-judge verification layer</b> before a customer sees it. Playbook engineered from <b>1,200+ real sales conversations</b>; voice runs on latency-routed models.</p>
-    <p class="metric">→ live at cylinderautosales.com · answering customers right now</p>
+    <span class="tag">Deployed · Verified E2E · Web + CRM</span>
+    <h3>Sofía — bilingual web sales agent</h3>
+    <p>Built and deployed a bilingual web sales agent integrated with a dealership CRM; verified the booking path end-to-end with a <b>real contact, appointment and opportunity</b>. Critical booking actions use deterministic checks; an LLM verifier runs on risk-sensitive replies and can veto or rewrite them.</p>
+    <p class="metric">STATE → DEPLOYED · REAL CRM BOOKING PATH VERIFIED END TO END</p>
   </div></div>
 
   <div class="case rv"><div class="num">02</div><div>
-    <span class="tag">Attribution · Meta Conversions API · CRM</span>
-    <h3>The loop advertisers never close</h3>
-    <p>Lead phone number → CRM pipeline stage → <b>Meta Conversions API purchase event</b>. The ad algorithm learns from closed sales instead of clicks. Built the same discipline inward: a sales radar that <b>judged 4,088 conversations</b> and proved the CRM was seeing ~1% of real sales activity.</p>
-    <p class="metric">→ ad spend now optimizes on revenue, not vanity metrics</p>
+    <span class="tag">Verified · Conversation Intelligence</span>
+    <h3>Auditable conversation diagnostic</h3>
+    <p>Processed <b>4,088 real sales conversations</b> into an auditable diagnostic funnel. The public result uses aggregate counts and does not present the historical diagnostic as a rescue campaign or a sales outcome.</p>
+    <p class="metric">STATE → VERIFIED · 4,088 CONVERSATIONS PROCESSED</p>
   </div></div>
 
   <div class="case rv"><div class="num">03</div><div>
-    <span class="tag">LLM Pipeline · Zero-dependency Node.js</span>
-    <h3>Agency OS — prospecting at machine scale</h3>
-    <p>Scored and LLM-enriched <b>11,800+ dealerships into 2,135 qualified prospects</b>, each with a personalized brief and hook. An autonomous AI analyst reads sales activity every morning and reports "the 3 actions worth money" via Telegram — on a cron, no humans required.</p>
-    <p class="metric">→ zero manual research · runs daily unattended</p>
+    <span class="tag">Verified · Node.js + LLM Pipeline</span>
+    <h3>Prospect qualification at dataset scale</h3>
+    <p>Built a Node.js/LLM pipeline that processed <b>11,837 businesses</b> and narrowed them to <b>2,135 qualified prospects</b> with personalized briefs.</p>
+    <p class="metric">STATE → VERIFIED · 11,837 PROCESSED → 2,135 QUALIFIED</p>
   </div></div>
 
   <div class="case rv"><div class="num">04</div><div>
-    <span class="tag">Device Automation · Python + Node.js</span>
-    <h3>An Android device farm with bank-grade discipline</h3>
-    <p>Fleet of physical phones (ADB/uiautomator2) publishing dealer inventory, with live telemetry dashboard, Telegram control bot, persistent per-day rate limits and <b>fail-closed safety gates</b>. Hardened through multi-agent adversarial code audits — 14+ real bugs found and fixed.</p>
-    <p class="metric">→ fail-closed by design · full unit-test suite</p>
+    <span class="tag">Verified Implementation · Multi-Tenant Data</span>
+    <h3>Conversation infrastructure with tenant boundaries</h3>
+    <p>Built a multi-tenant conversation store with <b>tenant isolation, row-level security and encrypted PII</b>.</p>
+    <p class="metric">STATE → VERIFIED IMPLEMENTATION · NO UNSUPPORTED SCALE CLAIMS</p>
   </div></div>
 
   <div class="case rv"><div class="num">05</div><div>
-    <span class="tag">Quant · C# · ONNX</span>
-    <h3>Trading systems that survive their own hype</h3>
-    <p>Recovered a client's NinjaTrader 8 algorithmic system from a dead VPS, extended it with an <b>ONNX ML inference gate</b>, and built a research pipeline with <b>pre-registered out-of-sample validation</b> — the discipline that kills false edges before they burn capital.</p>
-    <p class="metric">→ client system recovered, extended, and validated</p>
+    <span class="tag">Implemented + Test-Verified · CRM + Meta CAPI</span>
+    <h3>Closed-sale event path</h3>
+    <p>Implemented and test-verified the <b>closed-sale-to-Meta-CAPI event path</b>. The public evidence is limited to the implemented and tested event flow; no downstream performance result is asserted.</p>
+    <p class="metric">STATE → IMPLEMENTED + TEST-VERIFIED</p>
   </div></div>
 
   <div class="case rv"><div class="num">06</div><div>
-    <span class="tag">Multi-Agent OS · Local-first · $0 API cost</span>
-    <h3>The Office — an operating system for AI agents</h3>
-    <p>A personal command center where a fleet of AI agents — sales, prospecting, QA, orchestration — is visualized as a <b>live pixel-art office</b>: every character on screen is a real bounded workflow with state, run history and an accountable owner. A General Manager agent coordinates the roster and <b>temporary sub-agents spawn on demand</b>, do their slice of work, and disappear. The part that surprises engineers: it runs <b>100% local on a Claude subscription</b> — no paid API keys, works fully offline, external cost $0.00.</p>
-    <div class="shots">
-      <img src="assets/office/office-live.png" alt="The Office — live pixel-art visualization of a real AI agent fleet" loading="lazy">
-      <div class="col">
-        <img src="assets/office/dashboard-home.png" alt="Mi Dashboard — operations command center" loading="lazy">
-        <img src="assets/office/matrix.png" alt="Sub-agent spawning on demand (Matrix protocol)" loading="lazy">
-      </div>
-    </div>
-    <p class="metric">→ runs on a subscription, not an API budget · offline-ready · one person, a whole team on screen</p>
+    <span class="tag">Hardware-Validated Prototype · Android Automation</span>
+    <h3>Android device automation prototype</h3>
+    <p>Built and hardware-validated a prototype on a <b>real Android device</b>. The validated scope ends at that real-device prototype.</p>
+    <p class="metric">STATE → HARDWARE-VALIDATED PROTOTYPE</p>
   </div></div>
 
   <div class="case rv"><div class="num">07</div><div>
-    <span class="tag">Fintech SaaS · C# · Next.js · Supabase · Stripe</span>
-    <h3>PropCommand — a fintech SaaS, architected and built solo</h3>
-    <p>An end-to-end platform for prop-firm traders that I built alone: a <b>risk-first NinjaTrader 8 execution engine in C#</b>, a Next.js/Supabase dashboard with multi-tenant row-level security, Stripe billing and a Telegram bot — with <b>40+ database migrations gated by end-to-end receipts</b>. The core is a <b>deterministic "brain": every number is computed by code, the LLM only narrates, and it must pass a verifier before anything ships</b> — fail-closed by design, because it touches funded accounts.</p>
-    <p class="metric">→ one person, a complete SaaS end-to-end · code owns every number, never the model</p>
+    <span class="tag">Demo · Multi-Agent Control Plane</span>
+    <h3>The Office — multi-agent control-plane demo</h3>
+    <p>Built a multi-agent control-plane demo with a <b>57-agent template roster</b> and a <b>four-agent demo floor</b>. Only the four-agent floor is presented as demonstrated behavior.</p>
+    <p class="metric">STATE → DEMO · 57-AGENT TEMPLATE ROSTER · FOUR-AGENT DEMO FLOOR</p>
   </div></div>
 </section>
 
 <section id="process">
   <p class="eyebrow rv">How I work</p>
-  <h2 class="rv">A running system in 30 days.</h2>
-  <p class="sub rv">Not a slide deck. Not a roadmap. A system, in production, with a measurement loop.</p>
+  <h2 class="rv">Scope, ship, verify.</h2>
+  <p class="sub rv">A bounded workflow, explicit acceptance criteria and evidence for what actually works.</p>
   <div class="steps">
-    <div class="step rv"><span class="w">Week 1</span><h3>Map &amp; strike</h3><p>I find your highest-leverage manual workflow and ship a working automation against it. You see running code in the first week.</p></div>
-    <div class="step rv"><span class="w">Weeks 2–3</span><h3>The agent</h3><p>An AI agent — chat, voice or back-office — integrated with your real stack (CRM, ads, webhooks), with guardrails and evaluation, running in staging.</p></div>
-    <div class="step rv"><span class="w">Week 4</span><h3>Production + proof</h3><p>Deploy, plus a measurement loop so what it earns or saves shows up in numbers you can read. Then we decide what's next.</p></div>
+    <div class="step rv"><span class="w">01 · Define</span><h3>Bound the workflow</h3><p>Map the inputs, integrations, risk boundaries and acceptance criteria before expanding scope.</p></div>
+    <div class="step rv"><span class="w">02 · Build</span><h3>Ship the smallest end-to-end slice</h3><p>Integrate the agent or automation with the real stack, then add deterministic checks, evals and useful observability.</p></div>
+    <div class="step rv"><span class="w">03 · Verify</span><h3>Test the path, label the evidence</h3><p>Record what is deployed, verified, test-verified or still a prototype, then hand off the system and its operating limits.</p></div>
   </div>
 </section>
 
 <section id="engage">
   <p class="eyebrow rv">Work with me</p>
   <h2 class="rv">Your AI engineer, on demand.</h2>
-  <p class="sub rv">Available now for contract. Spanish native / English fluent — I build and sell in both. US Eastern time.</p>
+  <p class="sub rv">Open to contract and full-time remote AI automation work. Spanish native / English fluent. US Eastern time.</p>
   <div class="eng">
-    <div class="plan rv"><h3>Availability</h3><div class="price">Now</div><div class="per">Contract · remote</div>
-      <ul><li>20–40 hrs/week, start this week</li><li>Remote (US Eastern), bilingual EN/ES</li><li>Solo or embedded in your team</li></ul></div>
-    <div class="plan hot rv"><h3>What I ship</h3><div class="price">End&#8209;to&#8209;end</div><div class="per">Architect → deploy → measure</div>
-      <ul><li>AI agents (chat / voice / back-office)</li><li>LLM pipelines, CRM &amp; ads integration</li><li>Guardrails + LLM-verified outputs</li></ul></div>
-    <div class="plan rv"><h3>My guarantee</h3><div class="price">30 days</div><div class="per">A running system, not slides</div>
-      <ul><li>First working deliverable inside 30 days</li><li>Weekly shipped increments, always measured</li><li>Or we don't continue</li></ul></div>
+    <div class="plan rv"><h3>Availability</h3><div class="price">Open</div><div class="per">Contract · full-time · remote</div>
+      <ul><li>Remote collaboration in US Eastern time</li><li>Bilingual delivery in English and Spanish</li><li>Independent ownership or embedded teamwork</li></ul></div>
+    <div class="plan hot rv"><h3>What I ship</h3><div class="price">End&#8209;to&#8209;end</div><div class="per">Architect → integrate → verify</div>
+      <ul><li>AI agents for web and back-office workflows</li><li>LLM/data pipelines, CRM and webhook integrations</li><li>Deterministic guardrails, evals and observability</li></ul></div>
+    <div class="plan rv"><h3>Scope control</h3><div class="price">Explicit</div><div class="per">Acceptance criteria → change control</div>
+      <ul><li>Bounded implementation slice before expansion</li><li>Regular demos against agreed acceptance criteria</li><li>New requirements become visible scope decisions</li></ul></div>
   </div>
 </section>
 
 <section>
   <p class="eyebrow rv">Stack</p>
   <h2 class="rv">Tools follow the problem.</h2>
-  <p class="sub rv">What's currently in production.</p>
+  <p class="sub rv">Tools used across the evidence-backed work above and adjacent prototypes.</p>
   <div class="chips rv">
-    <span class="chip k">Claude API</span><span class="chip k">Claude Code</span><span class="chip k">MCP servers</span><span class="chip k">LLM-as-judge evals</span>
-    <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">C#</span><span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Firebase</span><span class="chip">Netlify</span>
-    <span class="chip">GoHighLevel</span><span class="chip">Meta Ads + CAPI</span><span class="chip">WhatsApp Business</span><span class="chip">Vapi</span><span class="chip">ElevenLabs</span>
-    <span class="chip">Playwright</span><span class="chip">Chrome MV3</span><span class="chip">ADB / uiautomator2</span><span class="chip">ONNX</span>
+    <span class="chip k">Claude API</span><span class="chip k">Claude Code</span><span class="chip k">LLM evals</span>
+    <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Netlify</span>
+    <span class="chip">GoHighLevel</span><span class="chip">Meta CAPI</span><span class="chip">Playwright</span><span class="chip">Chrome MV3</span><span class="chip">ADB / uiautomator2</span>
   </div>
-  <p style="margin-top:22px" class="rv">Open source: <a href="https://github.com/jjcarlucho/video-grabber">video-grabber</a> (MV3 + ffmpeg.wasm) · <a href="https://github.com/jjcarlucho/seevideo">seevideo</a> (video → LLM-readable)</p>
+  <p style="margin-top:22px" class="rv">Public code: <a href="https://github.com/jjcarlucho/video-grabber" target="_blank" rel="noopener noreferrer">video-grabber</a> · <a href="https://github.com/jjcarlucho/seevideo" target="_blank" rel="noopener noreferrer">seevideo</a></p>
 </section>
 </div>
 
 <footer class="foot"><div class="wrap">
   <p class="eyebrow rv">Next step</p>
-  <h2 class="rv">Let's build your<br>revenue system.</h2>
+  <h2 class="rv">Let's automate the workflow<br>your team needs to trust.</h2>
   <div class="cta rv" style="margin-top:30px">
     <a class="p" href="mailto:jjcarlucho@gmail.com">jjcarlucho@gmail.com</a>
-    <a class="s" href="https://github.com/jjcarlucho">github.com/jjcarlucho</a>
+    <a class="s" href="https://github.com/jjcarlucho" target="_blank" rel="noopener noreferrer">github.com/jjcarlucho</a>
   </div>
-  <p class="mono rv">(860) 893-5357 · SPANISH NATIVE / ENGLISH FLUENT · US EASTERN · FIRST DELIVERABLE INSIDE 30 DAYS</p>
+  <p class="mono rv">(860) 893-5357 · SPANISH NATIVE / ENGLISH FLUENT · US EASTERN · AI AUTOMATION / AGENTS / EVALS</p>
 </div></footer>
 
 <script>
