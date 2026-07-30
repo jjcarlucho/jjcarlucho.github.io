@@ -173,10 +173,10 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
   <div class="cta">
     <a class="p" href="mailto:jjcarlucho@gmail.com">Discuss a role or project</a>
     <a class="s" href="https://cylinderautosales.com" target="_blank" rel="noopener noreferrer">See the deployed web agent ↗</a>
-    <a class="s" href="https://github.com/jjcarlucho" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a class="s" href="https://jjcarlucho.github.io/agent-integrity-console/" target="_blank" rel="noopener noreferrer">Inspect Agent Integrity Console ↗</a>
   </div>
   <div class="ticker">
-    <span><b>●</b> SOFÍA WEB + CRM: DEPLOYED · E2E VERIFIED</span><span>4,088 CONVERSATIONS: VERIFIED DIAGNOSTIC</span><span>11,837 → 2,135: VERIFIED PIPELINE</span><span>CAPI PATH: IMPLEMENTED + TEST-VERIFIED</span>
+    <span><b>●</b> AGENT INTEGRITY CONSOLE: PUBLIC REFERENCE IMPLEMENTATION</span><span>SOFÍA WEB + CRM: DEPLOYED · E2E VERIFIED</span><span>4,088 CONVERSATIONS: VERIFIED DIAGNOSTIC</span><span>11,837 → 2,135: VERIFIED PIPELINE</span>
   </div>
 </div></header>
 
@@ -194,48 +194,56 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
   <p class="sub rv">The state label is part of every case: deployed, verified, test-verified, prototype or demo.</p>
 
   <div class="case rv"><div class="num">01</div><div>
+    <span class="tag">Published · TypeScript + React · Synthetic Scenarios</span>
+    <h3>Agent Integrity Console</h3>
+    <p>Published a public TypeScript/React reference implementation for <b>guarded, idempotent agent actions</b> with structured confirmation and inspectable traces. All scenarios, CRM data and confirmation tokens are synthetic; no production, scale or business-outcome claim.</p>
+    <p style="margin-top:12px"><a href="https://jjcarlucho.github.io/agent-integrity-console/" target="_blank" rel="noopener noreferrer">Interactive demo ↗</a> · <a href="https://github.com/jjcarlucho/agent-integrity-console" target="_blank" rel="noopener noreferrer">Source code ↗</a></p>
+    <p class="metric">STATE → PUBLISHED REFERENCE IMPLEMENTATION · SYNTHETIC DATA</p>
+  </div></div>
+
+  <div class="case rv"><div class="num">02</div><div>
     <span class="tag">Deployed · Verified E2E · Web + CRM</span>
     <h3>Sofía — bilingual web sales agent</h3>
     <p>Built and deployed a bilingual web sales agent integrated with a dealership CRM; verified the booking path end-to-end with a <b>real contact, appointment and opportunity</b>. Critical booking actions use deterministic checks; an LLM verifier runs on risk-sensitive replies and can veto or rewrite them.</p>
     <p class="metric">STATE → DEPLOYED · REAL CRM BOOKING PATH VERIFIED END TO END</p>
   </div></div>
 
-  <div class="case rv"><div class="num">02</div><div>
+  <div class="case rv"><div class="num">03</div><div>
     <span class="tag">Verified · Conversation Intelligence</span>
     <h3>Auditable conversation diagnostic</h3>
     <p>Processed <b>4,088 real sales conversations</b> into an auditable diagnostic funnel. The public result uses aggregate counts and does not present the historical diagnostic as a rescue campaign or a sales outcome.</p>
     <p class="metric">STATE → VERIFIED · 4,088 CONVERSATIONS PROCESSED</p>
   </div></div>
 
-  <div class="case rv"><div class="num">03</div><div>
+  <div class="case rv"><div class="num">04</div><div>
     <span class="tag">Verified · Node.js + LLM Pipeline</span>
     <h3>Prospect qualification at dataset scale</h3>
     <p>Built a Node.js/LLM pipeline that processed <b>11,837 businesses</b> and narrowed them to <b>2,135 qualified prospects</b> with personalized briefs.</p>
     <p class="metric">STATE → VERIFIED · 11,837 PROCESSED → 2,135 QUALIFIED</p>
   </div></div>
 
-  <div class="case rv"><div class="num">04</div><div>
+  <div class="case rv"><div class="num">05</div><div>
     <span class="tag">Verified Implementation · Multi-Tenant Data</span>
     <h3>Conversation infrastructure with tenant boundaries</h3>
     <p>Built a multi-tenant conversation store with <b>tenant isolation, row-level security and encrypted PII</b>.</p>
     <p class="metric">STATE → VERIFIED IMPLEMENTATION · NO UNSUPPORTED SCALE CLAIMS</p>
   </div></div>
 
-  <div class="case rv"><div class="num">05</div><div>
+  <div class="case rv"><div class="num">06</div><div>
     <span class="tag">Implemented + Test-Verified · CRM + Meta CAPI</span>
     <h3>Closed-sale event path</h3>
     <p>Implemented and test-verified the <b>closed-sale-to-Meta-CAPI event path</b>. The public evidence is limited to the implemented and tested event flow; no downstream performance result is asserted.</p>
     <p class="metric">STATE → IMPLEMENTED + TEST-VERIFIED</p>
   </div></div>
 
-  <div class="case rv"><div class="num">06</div><div>
+  <div class="case rv"><div class="num">07</div><div>
     <span class="tag">Hardware-Validated Prototype · Android Automation</span>
     <h3>Android device automation prototype</h3>
     <p>Built and hardware-validated a prototype on a <b>real Android device</b>. The validated scope ends at that real-device prototype.</p>
     <p class="metric">STATE → HARDWARE-VALIDATED PROTOTYPE</p>
   </div></div>
 
-  <div class="case rv"><div class="num">07</div><div>
+  <div class="case rv"><div class="num">08</div><div>
     <span class="tag">Demo · Multi-Agent Control Plane</span>
     <h3>The Office — multi-agent control-plane demo</h3>
     <p>Built a multi-agent control-plane demo with a <b>57-agent template roster</b> and a <b>four-agent demo floor</b>. Only the four-agent floor is presented as demonstrated behavior.</p>
@@ -274,10 +282,11 @@ h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(30px,
   <p class="sub rv">Tools used across the evidence-backed work above and adjacent prototypes.</p>
   <div class="chips rv">
     <span class="chip k">Claude API</span><span class="chip k">Claude Code</span><span class="chip k">LLM evals</span>
+    <span class="chip">TypeScript</span><span class="chip">React</span><span class="chip">Vite</span><span class="chip">Vitest</span>
     <span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Next.js</span><span class="chip">Supabase</span><span class="chip">Netlify</span>
     <span class="chip">GoHighLevel</span><span class="chip">Meta CAPI</span><span class="chip">Playwright</span><span class="chip">Chrome MV3</span><span class="chip">ADB / uiautomator2</span>
   </div>
-  <p style="margin-top:22px" class="rv">Public code: <a href="https://github.com/jjcarlucho/video-grabber" target="_blank" rel="noopener noreferrer">video-grabber</a> · <a href="https://github.com/jjcarlucho/seevideo" target="_blank" rel="noopener noreferrer">seevideo</a></p>
+  <p style="margin-top:22px" class="rv">Public code: <a href="https://github.com/jjcarlucho/agent-integrity-console" target="_blank" rel="noopener noreferrer">agent-integrity-console</a> · <a href="https://github.com/jjcarlucho/video-grabber" target="_blank" rel="noopener noreferrer">video-grabber</a> · <a href="https://github.com/jjcarlucho/seevideo" target="_blank" rel="noopener noreferrer">seevideo</a></p>
 </section>
 </div>
 
